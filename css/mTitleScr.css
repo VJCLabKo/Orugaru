@@ -17,18 +17,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    display: grid;
-    grid-template-columns: 0.4fr 1.8fr 1fr 1fr 1fr 1.7fr 0.4fr;
-    grid-template-rows: 0.2fr 0.3fr 1.3fr 0.3fr 0.3fr 1.8fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        ". . . . . vers ."
-        ". . . . bgmCtr bgmCtr ."
-        ". . . . . . ."
-        ". . st st st . ."
-        "cpy cpy cpy cpy cpy cpy cpy"
-        ". . . . . . .";
+    display: block;
 }
 
 .layer_1 {
@@ -40,18 +29,11 @@
     left: 0;
     right: 0;
     bottom: 0;
-    display: grid;
-    grid-template-columns: 0.2fr 1.8fr 1fr 1fr 1fr 1.7fr 0.3fr;
-    grid-template-rows: 0.2fr 0.2fr 1.4fr;
-    gap: 0px 0px;
-    grid-template-areas:
-        ". . . . . . ."
-        "tit tit tit tit tit tit tit"
-        ". . . . . . .";
+    display: block;
 }
 
 .layer_1 #title {
-    grid-area: tit;
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,8 +48,8 @@
 #sound-control {
     font-size: 18px;
     font-weight: bolder;
-    padding-left: 25%;
-    grid-area: bgmCtr;
+    margin-top: 23px;
+    margin-left: 280px;
     color: var(--main-textColor);
     cursor: pointer;
 }
@@ -80,16 +62,15 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    grid-area: vers;
     font-size: 16px;
-    padding-right: 5px;
+    margin-right: 30px;
     color: white;
     text-shadow: var(--main-textTextShadow);
 }
 
 #siteCredit {
     display: flex;
-    grid-area: cpy;
+    margin-top: 90px;
     color: white;
     align-items: flex-end;
     flex-wrap: wrap;
@@ -100,7 +81,7 @@
 }
 
 #startBtn {
-    grid-area: st;
+    margin-top: 280px;
     font-size: 18px;
     font-weight: bolder;
     display: flex;
