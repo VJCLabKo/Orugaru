@@ -1,0 +1,41 @@
+#LoaderOverlay {
+    background-color: #ffffff;
+}
+
+#LoaderSlide {
+    display: none;
+}
+
+#LoaderLoader {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    height: 4px;
+    right: 16px !important;
+    left: 16px !important;
+    margin: auto;
+}
+
+    #LoaderLoader::before {
+        content: "Now Loading...";
+        color: #39c5bb;
+        font-size: 2rem;
+        letter-spacing: 2px;
+        font-family: 'Vardana', sans-serif;
+    }
+
+#LoaderBar {
+    background: #39c5bb;
+    height: 8px;
+    width: 0%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#LoaderPercentage {
+    display: none;
+}
+
+#LoaderButton {
+    display: none;
+}
