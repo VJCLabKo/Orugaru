@@ -10,19 +10,26 @@ function addTop(meinEle) {
     title.innerText = textDB.title[isKor ? 1 : 0];
     meinEle.appendChild(title);
 }
-
-window.onload = () => {
-    //addTop(document.getElementById('main'))
+function appendSoundCtrl(){
+    let sCtrlEle = document.querySelector('#sound-control');
     let audioElm = document.querySelector('audio#bgm');
-    document.querySelector('#sound-control').onclick = ()=>{
+    sCtrlEle.onclick = ()=>{
         if (audioElm.paused && audioElm.currentTime >= 0 && !audioElm.started) {
             audioElm.play();
-            document.querySelector('#sound-control').innerText = '♪ BGM : ON';
-            document.querySelector('#sound-control').classList.add('on')
+            sCtrlEle.innerText = '♪ BGM : ON';
+            sCtrlEle.classList.add('on')
         }else{
             audioElm.pause();
-            document.querySelector('#sound-control').innerText = '♪ BGM : Off';
-            document.querySelector('#sound-control').classList.remove('on')
+            sCtrlEle.innerText = '♪ BGM : Off';
+            sCtrlEle.classList.remove('on')
         }
     }
+}
+
+window.onload = () => {
+    document.addEventListener('click',()=>{
+        document.getElementById('sfx_Onclick').play();
+    });
+    //addTop(document.getElementById('main'))
+    appendSoundCtrl();
 }
