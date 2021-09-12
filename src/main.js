@@ -38,7 +38,7 @@ function onPcFn(){
 }
 function getlastVer(cbf){
     xhr = new XMLHttpRequest();
-xhr.open('GET','./logs/logs.json');
+xhr.open('GET','./update/logs.json');
 xhr.onload =()=>{
 let j = JSON.parse(xhr.responseText);
 cbf('v'+j.pop().v);
