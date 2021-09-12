@@ -8,17 +8,27 @@
     <title>オルタナティブガールズ web</title>
     <script src="./src/main.js"></script>
     <link rel="stylesheet" href="./css/main.css">
-    <!-- 스마트폰 가로+세로 -->
+    <link rel="stylesheet" href="./css/preloader.css">
+    <!-- 스마트폰 세로 -->
     <link rel="stylesheet" href="./css/mTitleScr.css" media="only screen and (min-device-width : 320px) and (max-device-width : 480px)">
+    <link rel="stylesheet" href="./css/pTitleScr.css" media="screen and (min-width: 481px)">
+    <script src="./src/loader.js"></script>
 </head>
 
 <body>
+    <div id="LoaderOverlay">
+		<div id="LoaderSlide"></div>
+		<div id="LoaderLoader">
+			<div id="LoaderBar"></div>
+			<div id="LoaderButton">Start!</div>
+		</div>
+	</div>
     <audio id='sfx_Onclick' preload="auto" src="./sfx/カーソル移動7.mp3" controlsList="nodownload"></audio>
     <audio id='bgm' src="./musics/01. ルナリア (inst).mp3" controlsList="nodownload" preload="auto"></audio>
     <!-- <div id="main">
         <img src="./images/title 1.jpg" alt="main image">
     </div> -->
-    <div id="wrapper">
+    <div id="wrapper" style="display: none;">
         <div id="masthead">
             <!-- <div id="masthead-content">
                 <div id="character-detail">
@@ -34,11 +44,11 @@
                     <!-- text-shadow: 2px 2px 15px red, 0 0 1em white, 0 0 0.2em blue; -->
                 </div>
                 <div class="layer_2">
-                    <div id="siteVerDisplay">v0.02 Pre</div>
+                    <div id="siteVerDisplay">[onload...]</div>
                     <div id="sound-control">♪ BGM : Off</div>
                     <div id="startBtn">Touch to Begin...</div>
                     <div id="siteCredit">ⓒCyberAgent, inc. / QualiArts, Inc.<br>
-                        Developed by VJC Lab, Tm.<br>
+                        Web Version is Developed by VJC Lab, Tm.<br>
                         ※ WARNING, THIS SITE IS UNOFFICAL!
                     </div>
                 </div>

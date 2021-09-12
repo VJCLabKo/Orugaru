@@ -31,8 +31,6 @@ function showMein(time) {
 
 function showPage() {
   document.getElementById("LoaderOverlay").style.display = "none";
-  document.querySelector("header").style.display = "block";
-  document.getElementById("masthead").style.display = "block";
-  document.getElementById("global-footer").style.display = "block";
+  document.getElementById("wrapper").style.display = "block";
   loaded = true;
 };

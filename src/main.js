@@ -13,6 +13,10 @@ function addTop(meinEle) {
 function appendSoundCtrl(){
     let sCtrlEle = document.querySelector('#sound-control');
     let audioElm = document.querySelector('audio#bgm');
+    audioElm.addEventListener('ended',()=>{
+        sCtrlEle.innerText = '♪ BGM : Off';
+            sCtrlEle.classList.remove('on')
+    });
     sCtrlEle.onclick = ()=>{
         if (audioElm.paused && audioElm.currentTime >= 0 && !audioElm.started) {
             audioElm.play();
@@ -25,8 +29,27 @@ function appendSoundCtrl(){
         }
     }
 }
+function onPcFn(){
+    let tii = null;
+    if(window.screen.width > 481){
+        tii = document.querySelector('#global-header .logo img');
+        tii.src = './images/3_bg.jpg';
+    }
+}
+function getlastVer(cbf){
+    xhr = new XMLHttpRequest();
+xhr.open('GET','./logs/logs.json');
+xhr.onload =()=>{
+let j = JSON.parse(xhr.responseText);
+cbf('v'+j.pop().v);
+};
+xhr.send();
 
+}
 window.onload = () => {
+    showMein(5000);
+    getlastVer((x)=>document.getElementById('siteVerDisplay').innerText = x);
+    onPcFn();
     document.addEventListener('click',()=>{
         document.getElementById('sfx_Onclick').play();
     });

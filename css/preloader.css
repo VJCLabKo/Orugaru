@@ -18,14 +18,14 @@
 
     #LoaderLoader::before {
         content: "Now Loading...";
-        color: #39c5bb;
+        color: #36E8FF;
         font-size: 2rem;
         letter-spacing: 2px;
         font-family: 'Vardana', sans-serif;
     }
 
 #LoaderBar {
-    background: #39c5bb;
+    background: #36E8FF;
     height: 8px;
     width: 0%;
     height: 100%;
