@@ -51,7 +51,8 @@ function parse(u, cbf, head) {
 }
 function getNotis(cbf) {
     parse('./update/logs.json', (res) => {
-        DB.Noti = JSON.parse(res);
+        DB.Noti =[];
+DB.Noti= JSON.parse(res);
         DB.ver = DB.Noti.slice(-1)[0].v;
         DB.last = { v: DB.ver, t: null };
         parse('./update/v' + DB.ver + '.md', (res) => {
