@@ -1,0 +1,60 @@
+.noti{
+    position: fixed; 
+    z-index:4;
+    width : 80%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color :#ffffffb4;
+    border-radius: 10px;
+    margin: 10px auto;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+    animation: .2s zoomIn;
+}
+.noti .topw{
+    background-color: #4beaff;
+    padding: 10px 0 10px;
+    margin: 10px 0 10px;
+}
+.noti .topw #top{
+    font-weight: bolder;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+}
+.noti .items #top{
+    background-color: #4beaff;
+    color: white;
+    text-align: left;
+    font-weight: bolder;
+}
+
+/* Notification data */
+.noti .items #notiIData{
+    background-color:white;
+}
+.noti .items #notiIData h1{
+color:#4beaff
+}
+
+.noti .closew{
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.noti .closew button{
+    width: 30%;
+    color: white;
+    font-weight: bolder;
+    text-transform: uppercase;
+    border: 4px solid white;
+    background-color: gray;
+    border-style:outset;
+    border-radius: 8px;
+    text-align: center;
+}

@@ -1,7 +1,0 @@
-Add onClick sound, and Edited Css. for fixed view.
-
-Add onClick sound its temp.
-Edited Css. for fixed view.
-removed grid.
-
-quick fix json file on load version.
