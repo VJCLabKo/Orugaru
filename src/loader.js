@@ -21,15 +21,18 @@ function move(barID, time) {
     }
   }
 }
-function showMein(time) {
+function showMein(time,fn) {
   if (time == undefined) { time = 1000 };
   document.getElementById("LoaderOverlay").style.display = "block";
   move("LoaderBar", time);
-  myVar = setTimeout(showPage, time);
+  myVar = setTimeout(function(){showPage(fn)}, time);
 
 }
 
-function showPage() {
+function showPage(fn) {
+  if(fn&&typeof fn == 'function'){
+    fn(true,"finshed");
+  }
   document.getElementById("LoaderOverlay").style.display = "none";
   document.getElementById("wrapper").style.display = "block";
   loaded = true;
