@@ -19,7 +19,7 @@
     padding: 10px 0 10px;
     margin: 10px 0 10px;
 }
-.noti .topw #top{
+.noti .topw #top,.warn #warnTitle{
     font-weight: bolder;
     border: 2px solid white;
     background-color: transparent;
@@ -37,18 +37,16 @@
 .noti .items #notiIData{
     background-color:white;
 }
-.noti .items #notiIData h1{
-color:#4beaff
-}
 
 .noti .closew{
-    position: absolute;
+    position: relative;
     bottom: 5px;
     display: flex;
     width: 100%;
     justify-content: center;
 }
 .noti .closew button{
+    margin-top: 10px;
     width: 30%;
     color: white;
     font-weight: bolder;
@@ -58,4 +56,67 @@ color:#4beaff
     border-style:outset;
     border-radius: 8px;
     text-align: center;
+}
+#notiIData h1:first-of-type,#notiIData h2:first-of-type,#notiIData h3:first-of-type{
+    color:#4beaff;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#notiIData ul{
+    list-style-type: square;
+}
+#notiIData .textDeco{
+    text-decoration: none;
+    color: #4beaff;
+    margin-bottom: 0;
+}
+
+#notiIData ol{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+#wrapper.warning{
+    display: flex !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #00000080;
+    justify-content: center;
+    align-items: center;
+    
+}
+#wrapper .warn{
+    position: absolute;
+    box-sizing: content-box;
+    background-color: #ffffffb0;
+    padding: 10px;
+    border-radius: 10px;
+    animation: .35s zoomIn;
+    text-align: center;
+}
+
+.warn #warnTitle{
+    width: 100%;
+    background-color: #4beaff;
+    margin-bottom: 10px;
+    font-weight: bolder;
+    word-break: break-all;
+}
+.warn button#reload{
+    margin-top: 10px;
+    font-size: 1em;
+        color: white;
+        font-weight: bolder;
+        text-transform: uppercase;
+        border: 4px solid white;
+        background-color: #ffc04aef;
+        border-style:outset;
+        border-radius: 8px;
+        
 }

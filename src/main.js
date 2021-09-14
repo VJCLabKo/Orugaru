@@ -51,13 +51,24 @@ function parse(u, cbf, head) {
 }
 function getNotis(cbf) {
     parse('./update/logs.json', (res) => {
-        DB.Noti =[];
-DB.Noti= JSON.parse(res);
+        DB.Noti = [];
+        DB.Noti = JSON.parse(res);
         DB.ver = DB.Noti[DB.Noti.length - 1].v;
         DB.last = { v: DB.ver, t: null };
         parse('./update/v' + DB.ver + '.md', (res) => {
             DB.last.t = res;
         });
+        if (isKor) {
+            xhr = new XMLHttpRequest();
+            xhr.open('GET', './update/v' + DB.ver + ' (ko).md');
+            xhr.onload = () => {
+                DB.last.t = xhr.responseText;
+            }
+            xhr.onerror = () => {
+                console.log('cannot found korean noti')
+            }
+            xhr.send();
+        }
         cbf(DB.ver);
     })
 }
@@ -113,7 +124,51 @@ function addNotiView(instant) {
 }
 function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+}
+function appendWarningScr(tit, str) {
+    t = document.getElementById("wrapper");
+    b = document.createElement('div');
+    b.className = 'warn';
+    dt = document.createElement('div');
+    dt.id = 'warnTitle';
+    dt.innerText = tit ? tit : '404';
+    dd = document.createElement('div');
+    dd.id = 'warnData';
+    dd.innerText = str ? str : '[Description String]';
+    t.classList.add('warning');
+    btn = document.createElement('button');
+    btn.id = 'reload';
+    btn.innerText = 'reload';
+    btn.onclick = () => {
+        location.reload();
+    }
+    b.append(dt, dd, btn);
+    t.append(b);
+}
+function initMenu() {
+    let audioElm = document.querySelector('audio#bgm');
+    setSrc = (u) => audioElm.src = './musics/' + u + '.mp3';
+    audioElm.loop = true;
+    let list = ['オルガル メニュー他BGM01 ホーム画面', 'オルガル ストーリーBGM019 一難去って', 'オルガル ストーリーBGM021 一日の終わり', 'オルガル ストーリーBGM016 ルナリア～オルゴールVer. ～'];
+    let time = new Date().getHours();
+    // is less then pm 3hr?
+    if (time <= 13) {
+        setSrc(list[0]);
+    } else if (time >= 14 && time <= 17) {
+        // is after then pm 4hr && less then pm 7?
+        setSrc(list[1]);
+    } else {
+        setSrc(list[rand(2, 3)]);
+    }
+    document.querySelector("#masthead img").remove();
+    if (isKor) {
+        t = ["무기한 점검입니다.","빠른 시일내에 컨텐츠가 추가될 예정입니다.","불편을 드려 죄송합니다."];
+        appendWarningScr('점검 중', t.join('\n'));
+    } else {
+        t = ["We are sorry,","It's under Construction. ","Content will be added as soon as possible."]
+        appendWarningScr('WIP... Sorry.', t.join('\n'));
+    }
+}
 function pageinit() {
     DB.Noti = {};
     getNotis((x) => document.getElementById('siteVerDisplay').innerText = x);
@@ -133,11 +188,11 @@ function pageinit() {
         document.getElementById('global-header').style.animation = '.32s fadeout';
         setTimeout(() => {
             document.getElementById('global-header').remove();
-            showMein(8000, function(){
-                let list = ['オルガル ストーリーBGM021 一日の終わり', 'オルガル メニュー他BGM01 ホーム画面','オルガル ストーリーBGM016 ルナリア～オルゴールVer. ～'];
-                // is after pm 1hr? 
-                document.querySelector('audio#bgm').src = './musics/' + (new Date().getHours() > 13 ? list[0] : list[rand(1, 2)]) + '.mp3';
-            });
+            let img = document.createElement('img');
+            img.src = './images/bg.jpg';
+            document.getElementById("masthead").style.overflow = 'hidden';
+            document.getElementById("masthead").appendChild(img);
+            showMein(8000, initMenu);
         }, 300);
     }
 }
